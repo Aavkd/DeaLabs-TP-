@@ -1,360 +1,184 @@
-# Mini Dealabs CLI - TRAORE Alexy
+███╗   ███╗██╗███╗   ██╗██╗       ██████╗ ███████╗ █████╗ ██╗      █████╗ ██████╗ ███████╗
+████╗ ████║██║████╗  ██║██║      ██╔═══██╗██╔════╝██╔══██╗██║     ██╔══██╗██╔══██╗██╔════╝
+██╔████╔██║██║██╔██╗ ██║██║█████╗██║   ██║█████╗  ███████║██║     ███████║██████╔╝███████╗
+██║╚██╔╝██║██║██║╚██╗██║██║╚════╝██║   ██║██╔══╝  ██╔══██║██║     ██╔══██║██╔══██╗╚════██║
+██║ ╚═╝ ██║██║██║ ╚████║██║      ╚██████╔╝███████╗██║  ██║███████╗██║  ██║██████╔╝███████║
+╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝       ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
 
-A professional TypeScript CLI application for managing deals, votes, and statistics - built with clean code principles, comprehensive testing, and robust error handling.
 
-**Author**: Alexy TRAORE  
-**Project**: TP Final - Bonne Pratique Dev
 
-## 📋 Table of Contents
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript" />
+  <img src="https://img.shields.io/badge/Node.js-16+-green?logo=node.js" />
+  <img src="https://img.shields.io/badge/Tests-Jest%2057%E2%9C%94-red?logo=jest" />
+  <img src="https://img.shields.io/badge/Clean%20Code-✅-brightgreen" />
+  <img src="https://img.shields.io/badge/CLI-Interactive-orange" />
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+  <img src="https://img.shields.io/badge/Author-Alexy%20TRAORE-blue" />
+</p>
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Scripts](#scripts)
-- [Development](#development)
-- [Testing](#testing)
-- [Documentation](#documentation)
-- [Code Quality](#code-quality)
-- [Troubleshooting](#troubleshooting)
+# Mini Dealabs CLI 🚀
+Une application CLI moderne en **TypeScript** inspirée de Dealabs, avec **interface animée**, **architercture propre** et **tests Jest** 
 
-## ✨ Features
+## 🎓 Contexte du projet
+Projet réalisé dans le cadre du **TP Final – Bonne Pratique Dev**. Objectifs :
+✅ Maîtrise du TypeScript en mode strict
+✅ Respect des principes Clean Code (SRP, DRY, KISS)
+✅ Tests Jest (57 tests validés)
+✅ Interface CLI moderne (animations, tableaux, ASCII art, UX claire)
 
-### Deal Management
+---
 
-- **Create deals** with title, prices, URL, and category
-- **List deals** sorted by temperature (hotness)
-- **View deal details** with full information
-- **Search deals** by keyword and/or category
+## ✅ Fonctionnalités
+### 🛒 Gestion des Deals
+- Création avec validation stricte
+- Liste triée par **température (popularité)**
+- Recherche par **mot-clé et catégorie**
+- Détails complets
 
-### Voting System
+### 🔥 Votes
+- Voter **HOT (+1)** ou **COLD (-1)**
+- Score dynamique pour chaque deal
+- Statistiques de popularité
 
-- Vote **HOT** (+1 temperature) or **COLD** (-1 temperature)
-- Automatic temperature calculation
-- Vote statistics per deal
+### 📊 Statistiques
+- **Top 3** deals 🥇🥈🥉
+- Stats par catégories (graphique ASCII)
+- Calcul automatique des réductions
 
-### Statistics
+### 🎨 Interface moderne
+- Spinners animés (`ora`)
+- Tableaux élégants (`cli-table3`)
+- ASCII art (`figlet`, `gradient-string`)
+- Messages stylisés (`boxen`)
+- Navigation intuitive **avec émojis**
 
-- Top 3 hottest deals
-- Deal count by category
-- Discount percentage calculation
+---
 
-## 🛠 Tech Stack
+## 🖥️ Aperçu CLI
 
-- **Runtime**: Node.js 16+
-- **Language**: TypeScript (strict mode)
-- **CLI Framework**: Inquirer v8 (interactive menus)
-- **Logging**: Winston (structured logging)
-- **Testing**: Jest with ts-jest
-- **Documentation**: TypeDoc (TSDoc comments)
-- **Code Quality**: ESLint + Prettier (Airbnb style)
-- **Styling**: Chalk (terminal colors)
-
-## 📦 Installation
-
-### Prerequisites
-
-- Node.js >= 16.0.0
-- npm or yarn
-
-### Setup
-
-```bash
-# Clone or extract the project
-cd TRAORE-Alexy-mini-dealabs
-
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
+```
+┌──────────────────────────────┬────────────┬───────────────┬──────────┬────────┬────────────┐
+│ Title                        │ Category   │ Price         │ Discount │ Temp   │ Votes      │
+├──────────────────────────────┼────────────┼───────────────┼──────────┼────────┼────────────┤
+│ PlayStation 5 Console Bundl… │ Gaming     │ €550 → €499   │ -9.27%   │ 15°    │ 👍 18 👎 3 │
+├──────────────────────────────┼────────────┼───────────────┼──────────┼────────┼────────────┤
+│ Gaming Laptop RTX 4060       │ Tech       │ €1200 → €999  │ -16.75%  │ 5°     │ 👍 7 👎 2  │
+├──────────────────────────────┼────────────┼───────────────┼──────────┼────────┼────────────┤
+│ Test-Deal                    │ Tech       │ €999 → €666   │ -33.33%  │ 1°     │ 👍 1 👎 0  │
+├──────────────────────────────┼────────────┼───────────────┼──────────┼────────┼────────────┤
+│ Smart Home Hub               │ Home       │ €150 → €89    │ -40.67%  │ -1°    │ 👍 4 👎 5  │
+└──────────────────────────────┴────────────┴───────────────┴──────────┴────────┴────────────┘
 ```
 
-## 🚀 Usage
+---
 
-### Development Mode (TypeScript)
+
+## 🛠️ Stack Technique
+| Domaine | Technologie |
+|----------|-------------|
+| Langage | TypeScript (strict) |
+| CLI UI | Inquirer, Chalk, Ora, Boxen, Figlet |
+| Tests | Jest + ts-jest |
+| Logging | Winston |
+| Qualité | ESLint + Prettier |
+| Documentation | TypeDoc |
+| Persistance | Fichiers JSON (fs async) |
+
+---
+
+
+## 🔧 Installation
+
+```bash
+git clone <repo>
+cd mini-dealabs-cli
+npm install
+```
+
+---
+
+## ▶️ Utilisation
+
+**Mode développement :**
 
 ```bash
 npm run dev
 ```
 
-### Production Mode (Compiled)
+**Mode production :**
 
 ```bash
+npm run build
 npm start
 ```
 
-### Interactive Menu
+---
 
-Once started, you'll see an interactive menu:
-
-```
-🎯 Welcome to Mini Dealabs CLI
-
-? What would you like to do?
-  Create a new deal
-  List all deals
-  View deal details
-  Search deals
-  Vote HOT on a deal
-  Vote COLD on a deal
-  View statistics
-  Exit
-```
-
-### Example Workflow
-
-1. **Create a Deal**
-   - Select "Create a new deal"
-   - Enter title: `Gaming Laptop RTX 4060`
-   - Enter original price: `1200`
-   - Enter discounted price: `999`
-   - Enter URL: `https://amazon.com/laptop`
-   - Select category: `Tech`
-
-2. **Vote on a Deal**
-   - Select "Vote HOT on a deal"
-   - Enter the deal ID (shown in list)
-   - Confirm the vote
-
-3. **View Statistics**
-   - Select "View statistics"
-   - See top 3 hottest deals and category breakdown
-
-## 📁 Project Structure
+## 📁 Structure du Projet
 
 ```
 TRAORE-Alexy-mini-dealabs/
 ├─ src/
-│   ├─ index.ts               # CLI entry point (Inquirer menu)
-│   ├─ dealManager.ts         # Deal business logic
-│   ├─ voteManager.ts         # Vote logic
-│   ├─ validators.ts          # Input validation
-│   ├─ logger.ts              # Winston configuration
-│   ├─ storage.ts             # JSON persistence
-│   ├─ types.ts               # TypeScript types & Result monad
+│   ├─ index.ts           # Entrée CLI (menu Inquirer + animations) ✅
+│   ├─ dealManager.ts     # Logique métier des deals ✅
+│   ├─ voteManager.ts     # Logique de vote ✅
+│   ├─ validators.ts      # Validation des entrées ✅
+│   ├─ logger.ts          # Logger Winston ✅
+│   ├─ storage.ts         # Persistance JSON ✅
+│   ├─ types.ts           # Types partagés & Result ✅
 │   └─ data/
-│       └─ deals.json         # Persistent data (auto-created)
+│       └─ deals.json     # Données persistantes ✅
 ├─ __tests__/
-│   ├─ validators.test.ts     # Validator tests
-│   ├─ dealManager.test.ts    # Deal manager tests
-│   └─ voteManager.test.ts    # Vote manager tests
-├─ docs/                      # Generated TypeDoc HTML
-├─ dist/                      # Compiled JavaScript (git-ignored)
-├─ logs/                      # Application logs (git-ignored)
-├─ package.json
-├─ tsconfig.json
-├─ jest.config.ts
-├─ .eslintrc.json
-├─ .prettierrc
-├─ typedoc.json
-└─ README.md
+│   ├─ validators.test.ts    # 25 tests ✅
+│   ├─ dealManager.test.ts   # 20 tests ✅
+│   └─ voteManager.test.ts   # 12 tests ✅
+├─ docs/                     # HTML TypeDoc ✅
+├─ dist/                     # JS compilé ✅
+├─ package.json              # Tous les scripts ✅
+├─ tsconfig.json             # Config TS stricte ✅
+├─ jest.config.ts            # Jest avec ts-jest ✅
+├─ .eslintrc.json            # ESLint (Airbnb TS) ✅
+├─ .prettierrc               # Config Prettier ✅
+├─ typedoc.json              # Config TypeDoc ✅
+└─ README.md                 # Documentation pro ✅
 ```
-
-## 📜 Scripts
-
-| Script               | Description                       |
-| -------------------- | --------------------------------- |
-| `npm run dev`        | Run CLI in development mode (tsx) |
-| `npm run build`      | Compile TypeScript to dist/       |
-| `npm start`          | Run compiled CLI (production)     |
-| `npm run lint`       | Check code with ESLint            |
-| `npm run lint:fix`   | Auto-fix ESLint issues            |
-| `npm run format`     | Format code with Prettier         |
-| `npm test`           | Run all tests                     |
-| `npm run test:watch` | Run tests in watch mode           |
-| `npm run docs`       | Generate TypeDoc documentation    |
-
-## 🔧 Development
-
-### Code Style
-
-This project follows strict coding standards:
-
-- **Clean Code**: SRP, DRY, KISS principles
-- **TypeScript**: Strict mode with `noUncheckedIndexedAccess`
-- **Line Length**: Max 100 characters
-- **Naming**: camelCase for variables/functions, PascalCase for types
-- **Comments**: TSDoc for all public functions
-- **Error Handling**: Result/Either pattern, no crashes
-
-### Adding a New Feature
-
-1. Define types in `src/types.ts`
-2. Add validation in `src/validators.ts`
-3. Implement logic in appropriate manager
-4. Add tests in `__tests__/`
-5. Update CLI menu in `src/index.ts`
-6. Run lint, format, and tests
-
-### Logging
-
-Use logger functions instead of console:
-
-```typescript
-import { logInfo, logError, logDebug } from './logger';
-
-logInfo('Deal created', { dealId: '123' });
-logError('Failed to save', error);
-```
-
-Logs are written to:
-
-- `logs/combined.log` (all levels)
-- `logs/error.log` (errors only)
-- Console (development)
-
-## 🧪 Testing
-
-### Run Tests
-
-```bash
-# Run all tests
-npm test
-
-# Watch mode
-npm run test:watch
-
-# With coverage
-npm test -- --coverage
-```
-
-### Test Structure
-
-- **Unit tests**: All business logic and validators
-- **Mocks**: Storage and logger are mocked
-- **Coverage**: Target 80%+ for core logic
-
-### Example Test
-
-```typescript
-it('should create a valid deal with temperature 0', async () => {
-  const input = {
-    title: 'Test Deal',
-    originalPrice: 100,
-    discountedPrice: 80,
-    url: 'https://example.com',
-    category: 'Tech' as const,
-  };
-
-  const result = await createDeal(input);
-
-  expect(isSuccess(result)).toBe(true);
-  if (isSuccess(result)) {
-    expect(result.value.temperature).toBe(0);
-  }
-});
-```
-
-## 📚 Documentation
-
-### Generate Docs
-
-```bash
-npm run docs
-```
-
-Docs are generated to `docs/` folder. Open `docs/index.html` in browser.
-
-### TSDoc Comments
-
-All public functions have TSDoc comments:
-
-```typescript
-/**
- * Creates a new deal and persists it
- * @param input - Deal creation input data
- * @returns Result containing the created deal or an error
- */
-export async function createDeal(input: CreateDealInput): Promise<Result<Deal>>;
-```
-
-## ✅ Code Quality
-
-### ESLint + Prettier
-
-```bash
-# Check for issues
-npm run lint
-
-# Auto-fix issues
-npm run lint:fix
-
-# Format all files
-npm run format
-```
-
-### Pre-commit Checklist
-
-```bash
-npm run lint
-npm run format
-npm test
-npm run build
-```
-
-All commands should pass without errors.
-
-## 🔍 Troubleshooting
-
-### Issue: Dependencies not found
-
-**Solution**: Run `npm install`
-
-### Issue: TypeScript errors
-
-**Solution**: Ensure TypeScript is installed: `npm install -D typescript`
-
-### Issue: Can't run dev mode
-
-**Solution**: Install tsx: `npm install -D tsx`
-
-### Issue: Tests fail
-
-**Solution**:
-
-- Check Node version (>= 16)
-- Clear Jest cache: `npx jest --clearCache`
-- Reinstall: `rm -rf node_modules && npm install`
-
-### Issue: Data file missing
-
-**Solution**: The app auto-creates `src/data/deals.json` with sample data on first run.
-
-### Issue: Port/Permission errors
-
-**Solution**: This is a CLI app, not a server - no ports used.
-
-### Issue: ESLint/Prettier conflicts
-
-**Solution**: Prettier is configured to disable conflicting ESLint rules. Run `npm run format` then `npm run lint:fix`.
-
-## 🎯 Complete Verification
-
-Run all checks:
-
-```bash
-npm install
-npm run lint
-npm run format
-npm run build
-npm test
-npm run docs
-npm run dev        # Test interactively
-npm start          # Test compiled version
-```
-
-All commands should succeed ✅
-
-## 📝 License
-
-MIT
-
-## 👤 Author
-
-**Alexy TRAORE**
 
 ---
 
-**Built with ❤️ using TypeScript, Clean Code principles, and best practices**
+## 🧪 Tests
+
+✅ 57 tests Jest unitaires  
+✅ Mock du stockage fichier  
+✅ Vérification complète de la logique
+
+```bash
+npm test
+```
+
+---
+
+## 🚀 Scripts
+
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Lancement TS |
+| `npm run build` | Build TypeScript |
+| `npm start` | Exécution Node |
+| `npm test` | Tests Jest |
+| `npm run lint` | Vérification ESLint |
+| `npm run format` | Formatage Prettier |
+| `npm run docs` | Documentation TypeDoc |
+
+---
+
+## 📜 Licence
+
+MIT License
+
+---
+
+## 👨‍💻 Auteur
+
+Développé avec ❤️ par **Alexy TRAORE**  
+*TP Final – Bonne Pratique Dev*
