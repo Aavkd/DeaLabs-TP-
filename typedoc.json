@@ -1,0 +1,14 @@
+{
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "exclude": ["**/__tests__/**", "**/node_modules/**", "**/dist/**"],
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "readme": "README.md",
+  "name": "Mini Dealabs CLI Documentation",
+  "includeVersion": true,
+  "sort": ["source-order"],
+  "theme": "default"
+}
