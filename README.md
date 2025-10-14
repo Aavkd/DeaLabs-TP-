@@ -108,7 +108,7 @@ Projet réalisé dans le cadre du **TP Final – Bonne Pratique Dev**. Objectifs
 ## 🔧 Installation
 
 ```bash
-git clone <repo>
+git clone https://github.com/Aavkd/DeaLabs-TP-.git
 cd mini-dealabs-cli
 npm install
 ```
