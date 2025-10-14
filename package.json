@@ -25,12 +25,19 @@
   "author": "Alexy TRAORE",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^8.2.6",
-    "winston": "^3.11.0",
+    "boxen": "^5.1.2",
     "chalk": "^4.1.2",
-    "uuid": "^9.0.1"
+    "cli-table3": "^0.6.3",
+    "figlet": "^1.7.0",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
+    "@types/figlet": "^1.5.8",
+    "@types/gradient-string": "^1.1.5",
     "@types/inquirer": "^8.2.10",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.6",
