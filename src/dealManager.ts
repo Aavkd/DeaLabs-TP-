@@ -3,7 +3,6 @@
  * @description Core functionality for creating, listing, searching, and analyzing deals
  */
 
-import { v4 as uuidv4 } from 'uuid';
 import {
   Deal,
   CreateDealInput,
@@ -25,6 +24,20 @@ import {
 import { logInfo, logError, logDebug } from './logger';
 
 /**
+ * Generates a short random ID (7-8 characters)
+ * @returns A random alphanumeric ID
+ */
+function generateShortId(): string {
+  const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const length = Math.random() > 0.5 ? 7 : 8;
+  let id = '';
+  for (let i = 0; i < length; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
+
+/**
  * Creates a new deal and persists it
  * @param input - Deal creation input data
  * @returns Result containing the created deal or an error
@@ -39,7 +52,7 @@ export async function createDeal(input: CreateDealInput): Promise<Result<Deal>> 
 
     // Create new deal
     const newDeal: Deal = {
-      id: uuidv4(),
+      id: generateShortId(),
       title: sanitizeString(input.title),
       originalPrice: input.originalPrice,
       discountedPrice: input.discountedPrice,

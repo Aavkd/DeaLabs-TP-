@@ -86,7 +86,7 @@ export async function seedDataIfEmpty(): Promise<void> {
     logInfo('Seeding initial deals data');
     const sampleDeals: Deal[] = [
       {
-        id: '1',
+        id: 'a1b2c3d',
         title: 'Gaming Laptop RTX 4060',
         originalPrice: 1200,
         discountedPrice: 999,
@@ -98,7 +98,7 @@ export async function seedDataIfEmpty(): Promise<void> {
         createdAt: new Date().toISOString(),
       },
       {
-        id: '2',
+        id: 'x9y8z7w',
         title: 'PlayStation 5 Console Bundle',
         originalPrice: 550,
         discountedPrice: 499,
@@ -110,7 +110,7 @@ export async function seedDataIfEmpty(): Promise<void> {
         createdAt: new Date().toISOString(),
       },
       {
-        id: '3',
+        id: 'p4q5r6s',
         title: 'Smart Home Hub',
         originalPrice: 150,
         discountedPrice: 89,
