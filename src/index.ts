@@ -46,6 +46,24 @@ function sleep(ms: number): Promise<void> {
 }
 
 /**
+ * Safely formats a date string, returning the original if parsing fails
+ * @param dateString - The date string to format
+ * @returns Formatted date or original string if invalid
+ */
+function formatDate(dateString: string): string {
+  try {
+    const date = new Date(dateString);
+    // Check if date is valid
+    if (Number.isNaN(date.getTime())) {
+      return dateString;
+    }
+    return date.toLocaleString();
+  } catch {
+    return dateString;
+  }
+}
+
+/**
  * Display a styled banner
  */
 function displayBanner(): void {
@@ -335,7 +353,7 @@ async function handleDealDetail(): Promise<void> {
         `  Cold votes:   ${chalk.blue(`👎 ${stats.votesCold}`)}`,
         `  Hot ratio:    ${chalk.yellow(`${stats.hotPercentage}%`)}`,
         '',
-        `${chalk.bold('Created:')}     ${chalk.gray(new Date(deal.createdAt).toLocaleString())}`,
+        `${chalk.bold('Created:')}     ${chalk.gray(formatDate(deal.createdAt))}`,
         '',
       ].join('\n');
 

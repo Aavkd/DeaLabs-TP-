@@ -29,7 +29,6 @@
 - [Structure du Projet](#-structure-du-projet)
 - [Tests](#-tests)
 - [Scripts](#-scripts)
-- [Licence](#-licence)
 - [Auteur](#-auteur)
 
 ---
@@ -186,12 +185,6 @@ npm test
 | `npm run lint` | Vérification ESLint |
 | `npm run format` | Formatage Prettier |
 | `npm run docs` | Documentation TypeDoc |
-
----
-
-## 📜 Licence
-
-MIT License
 
 ---
 
