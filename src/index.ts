@@ -242,8 +242,9 @@ async function handleListDeals(): Promise<void> {
           chalk.cyan.bold('Discount'),
           chalk.cyan.bold('Temp'),
           chalk.cyan.bold('Votes'),
+          chalk.cyan.bold('ID'),
         ],
-        colWidths: [30, 12, 15, 10, 8, 12],
+        colWidths: [28, 12, 15, 10, 8, 12, 10],
         style: {
           head: [],
           border: ['gray'],
@@ -254,14 +255,16 @@ async function handleListDeals(): Promise<void> {
         const discount = calculateDiscount(deal);
         const tempColor = deal.temperature > 0 ? chalk.red : chalk.blue;
         const priceDisplay = `${chalk.gray.strikethrough(`€${deal.originalPrice}`)} → ${chalk.green(`€${deal.discountedPrice}`)}`;
+        const shortId = deal.id.substring(0, 8);
 
         table.push([
-          chalk.bold(deal.title.length > 27 ? `${deal.title.substring(0, 27)}...` : deal.title),
+          chalk.bold(deal.title.length > 25 ? `${deal.title.substring(0, 25)}...` : deal.title),
           chalk.gray(deal.category),
           priceDisplay,
           chalk.green(`-${discount}%`),
           tempColor(`${deal.temperature}°`),
           `👍 ${deal.votesHot} 👎 ${deal.votesCold}`,
+          chalk.gray(shortId),
         ]);
       });
 
@@ -428,8 +431,9 @@ async function handleSearch(): Promise<void> {
           chalk.cyan.bold('Price'),
           chalk.cyan.bold('Discount'),
           chalk.cyan.bold('Temp'),
+          chalk.cyan.bold('ID'),
         ],
-        colWidths: [35, 12, 15, 10, 8],
+        colWidths: [32, 12, 15, 10, 8, 10],
         style: {
           head: [],
           border: ['gray'],
@@ -439,13 +443,15 @@ async function handleSearch(): Promise<void> {
       result.value.forEach((deal) => {
         const discount = calculateDiscount(deal);
         const tempColor = deal.temperature > 0 ? chalk.red : chalk.blue;
+        const shortId = deal.id.substring(0, 8);
 
         table.push([
-          chalk.bold(deal.title.length > 32 ? `${deal.title.substring(0, 32)}...` : deal.title),
+          chalk.bold(deal.title.length > 29 ? `${deal.title.substring(0, 29)}...` : deal.title),
           chalk.gray(deal.category),
           chalk.green(`€${deal.discountedPrice}`),
           chalk.green(`-${discount}%`),
           tempColor(`${deal.temperature}°`),
+          chalk.gray(shortId),
         ]);
       });
 
