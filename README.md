@@ -17,6 +17,23 @@
   <img src="https://img.shields.io/badge/Author-Alexy%20TRAORE-blue" />
 </p>
 
+## 📋 Table des matières
+
+- [À propos](#-mini-dealabs-cli-)
+- [Contexte du projet](#-contexte-du-projet)
+- [Fonctionnalités](#-fonctionnalités)
+- [Aperçu CLI](#️-aperçu-cli)
+- [Stack Technique](#️-stack-technique)
+- [Installation](#-installation)
+- [Utilisation](#️-utilisation)
+- [Structure du Projet](#-structure-du-projet)
+- [Tests](#-tests)
+- [Scripts](#-scripts)
+- [Licence](#-licence)
+- [Auteur](#-auteur)
+
+---
+
 # Mini Dealabs CLI 🚀
 Une application CLI moderne en **TypeScript** inspirée de Dealabs, avec **interface animée**, **architercture propre** et **tests Jest** 
 
